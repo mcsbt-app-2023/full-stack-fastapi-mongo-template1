@@ -30,4 +30,5 @@ COPY ./app /app/app
 EXPOSE 8000
 
 # Command to run the application, $PORT is set by Cloud Run
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
