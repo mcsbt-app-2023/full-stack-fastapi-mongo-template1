@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  ACCESS_TOKEN_EXPIRE_MINUTES: "11520"
+  ALGORITHM: HS256
+  BACKEND_CORS_ORIGINS: http://localhost,http://localhost:5173,https://localhost,https://localhost:5173,http://localhost.tiangolo.com
+  DOCKER_IMAGE_BACKEND: backend
+  DOCKER_IMAGE_FRONTEND: frontend
+  DOMAIN: localhost
+  EMAILS_FROM_EMAIL: info@example.com
+  ENVIRONMENT: local
+  FIRST_SUPERUSER: admin@example.com
+  FIRST_SUPERUSER_PASSWORD: changethis
+  MONGODB_DB: test-db
+  MONGODB_URI: mongodb+srv://admin:admin1234!@cluster0.ba2wonq.mongodb.net/?appName=Cluster0
+  PROJECT_NAME: Full Stack FastAPI Project
+  SECRET_KEY: changethis
+  SENTRY_DSN: ""
+  SMTP_HOST: ""
+  SMTP_PASSWORD: ""
+  SMTP_PORT: "587"
+  SMTP_SSL: "False"
+  SMTP_TLS: "True"
+  SMTP_USER: ""
+  STACK_NAME: full-stack-fastapi-project
+  USERS_OPEN_REGISTRATION: "False"
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: backend-env
+  name: env
