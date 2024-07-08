@@ -7,17 +7,17 @@ metadata:
     traefik.constraint-label: traefik-public
     traefik.docker.network: traefik-public
     traefik.enable: "true"
-    traefik.http.middlewares.full-stack-fastapi-project-www-redirect.redirectregex.regex: ^http(s)?://www.(localhost)/(.*)
-    traefik.http.middlewares.full-stack-fastapi-project-www-redirect.redirectregex.replacement: http${1}://localhost/${3}
-    traefik.http.routers.full-stack-fastapi-project-backend-http.entrypoints: http
-    traefik.http.routers.full-stack-fastapi-project-backend-http.middlewares: https-redirect,full-stack-fastapi-project-www-redirect
-    traefik.http.routers.full-stack-fastapi-project-backend-http.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
-    traefik.http.routers.full-stack-fastapi-project-backend-https.entrypoints: https
-    traefik.http.routers.full-stack-fastapi-project-backend-https.middlewares: full-stack-fastapi-project-www-redirect
-    traefik.http.routers.full-stack-fastapi-project-backend-https.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
-    traefik.http.routers.full-stack-fastapi-project-backend-https.tls: "true"
-    traefik.http.routers.full-stack-fastapi-project-backend-https.tls.certresolver: le
-    traefik.http.services.full-stack-fastapi-project-backend.loadbalancer.server.port: "80"
+    traefik.middleware.www-redirect.regex: ^http(s)?://www.(localhost)/(.*)
+    traefik.middleware.www-redirect.replacement: http${1}://localhost/${3}
+    traefik.router.backend-http.entrypoints: http
+    traefik.router.backend-http.middlewares: https-redirect,www-redirect
+    traefik.router.backend-http.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
+    traefik.router.backend-https.entrypoints: https
+    traefik.router.backend-https.middlewares: www-redirect
+    traefik.router.backend-https.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
+    traefik.router.backend-https.tls: "true"
+    traefik.router.backend-https.tls.certresolver: le
+    traefik.service.backend.port: "80"
   labels:
     io.kompose.service: backend
   name: backend
@@ -34,17 +34,17 @@ spec:
         traefik.constraint-label: traefik-public
         traefik.docker.network: traefik-public
         traefik.enable: "true"
-        traefik.http.middlewares.full-stack-fastapi-project-www-redirect.redirectregex.regex: ^http(s)?://www.(localhost)/(.*)
-        traefik.http.middlewares.full-stack-fastapi-project-www-redirect.redirectregex.replacement: http${1}://localhost/${3}
-        traefik.http.routers.full-stack-fastapi-project-backend-http.entrypoints: http
-        traefik.http.routers.full-stack-fastapi-project-backend-http.middlewares: https-redirect,full-stack-fastapi-project-www-redirect
-        traefik.http.routers.full-stack-fastapi-project-backend-http.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
-        traefik.http.routers.full-stack-fastapi-project-backend-https.entrypoints: https
-        traefik.http.routers.full-stack-fastapi-project-backend-https.middlewares: full-stack-fastapi-project-www-redirect
-        traefik.http.routers.full-stack-fastapi-project-backend-https.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
-        traefik.http.routers.full-stack-fastapi-project-backend-https.tls: "true"
-        traefik.http.routers.full-stack-fastapi-project-backend-https.tls.certresolver: le
-        traefik.http.services.full-stack-fastapi-project-backend.loadbalancer.server.port: "80"
+        traefik.middleware.www-redirect.regex: ^http(s)?://www.(localhost)/(.*)
+        traefik.middleware.www-redirect.replacement: http${1}://localhost/${3}
+        traefik.router.backend-http.entrypoints: http
+        traefik.router.backend-http.middlewares: https-redirect,www-redirect
+        traefik.router.backend-http.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
+        traefik.router.backend-https.entrypoints: https
+        traefik.router.backend-https.middlewares: www-redirect
+        traefik.router.backend-https.rule: Host(`localhost`, `www.localhost`) && PathPrefix(`/api`, `/docs`, `/redoc`)
+        traefik.router.backend-https.tls: "true"
+        traefik.router.backend-https.tls.certresolver: le
+        traefik.service.backend.port: "80"
       labels:
         io.kompose.service: backend
     spec:
