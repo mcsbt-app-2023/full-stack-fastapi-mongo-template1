@@ -14,6 +14,7 @@ OpenAPI.TOKEN = async () => {
 }
 
 const queryClient = new QueryClient()
+console.log('API URL:', import.meta.env.VITE_API_URL);
 
 const router = createRouter({ routeTree })
 declare module "@tanstack/react-router" {
