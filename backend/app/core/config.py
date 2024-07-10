@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    DOMAIN: str = "localhost"
+    DOMAIN: str = "https://fastapi-backend-ws2dqnpypa-ew.a.run.app"
     ENVIRONMENT: Literal["local", "staging", "production"] = "local"
     ALGORITHM: str = "HS256"  # Add this line to specify the JWT algorithm
 
